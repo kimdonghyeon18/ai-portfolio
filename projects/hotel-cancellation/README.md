@@ -8,6 +8,10 @@
 | 도구 | Python, pandas, matplotlib, seaborn |
 | 노트북 | [`hotel_cancellation.ipynb`](./hotel_cancellation.ipynb) |
 
+![예약 시점별 취소율](./images/lead_time_cancel_rate.png)
+
+*일찍 예약할수록 취소율이 올라갑니다. 1년 이상 전 예약은 City Hotel에서 70% 넘게 취소되었습니다.*
+
 ---
 
 ## 1. 문제
@@ -65,3 +69,12 @@
 - **다시 한다면:**
   - 다섯 요인으로 취소 예측 모델을 만들고, 기간을 기준으로 데이터를 분할해 검증하겠습니다.
   - 초과 예약(오버부킹)은 예측이 충분히 정확할 때만 쓸 수 있으므로, 예측 오차를 얼마나 허용할지부터 정하겠습니다.
+
+## 7. 직접 실행해 보기
+
+부트캠프에서 제공한 `hotel_data_modified.csv`를 노트북과 같은 폴더에 두고 위에서부터 실행합니다. 원본은 Kaggle [Hotel booking demand](https://www.kaggle.com/datasets/jessemostipak/hotel-booking-demand) 데이터입니다.
+
+```bash
+pip install -r requirements.txt
+jupyter notebook hotel_cancellation.ipynb
+```

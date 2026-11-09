@@ -5,8 +5,12 @@
 | 항목 | 내용 |
 | --- | --- |
 | 데이터 | 손상 문서 train 144장(원본 짝 있음) / test 72장, 크기 420×540과 258×540 두 종류 |
-| 도구 | Python, PyTorch (Conv2d, ConvTranspose2d), NumPy, PIL |
+| 도구 | Python, PyTorch (Conv2d, ConvTranspose2d), NumPy, PIL, Gradio |
 | 노트북 | [`document_denoising.ipynb`](./document_denoising.ipynb) |
+
+![손상본, 복원 결과, 원본 비교](./images/before_after.png)
+
+*검증 이미지 두 장의 왼쪽 위 부분입니다. 위는 가장 크게 개선된 140.png, 아래는 복원 오차가 가장 컸던 168.png입니다.*
 
 ---
 
@@ -98,3 +102,29 @@
   - 글자 경계를 겨냥해 경계 픽셀에 가중치를 준 손실을 실험하겠습니다.
   - 진한 얼룩이 글자와 겹친 예시가 적었으므로, 실제 얼룩 패턴을 합성하는 증강을 시도하겠습니다.
 - **배운 점:** 모델이 실패할 때 "모두 흰색" 같은 **단순한 기준값과 정확히 같은지**를 확인하니, 성능이 나쁜 것이 아니라 학습 자체가 멈췄다는 것을 바로 알 수 있었습니다. 큰 모델이 안 될 때는 구조를 탓하기 전에 학습률부터 확인해야 합니다.
+
+## 7. 직접 실행해 보기
+
+**데모:** 이미지를 올리면 복원 결과를 보여주는 Gradio 앱입니다.
+
+```bash
+pip install -r requirements.txt
+python app.py
+```
+
+**데이터:** [Kaggle Denoising Dirty Documents](https://www.kaggle.com/c/denoising-dirty-documents/data)에서 받아 `denoising/` 폴더에 `train`, `train_cleaned`, `test`를 풀어 둡니다.
+
+```bash
+python predict.py --data denoising --eval                     # 검증 24장 RMSE (0.0127~0.0128)
+python predict.py --data denoising --input test --out restored  # test 이미지 복원
+python predict.py --data denoising --submission submission.csv  # Kaggle 제출 파일
+python train.py --data denoising --epochs 600                   # 처음부터 다시 학습 (GPU 약 7분)
+```
+
+| 파일 | 내용 |
+| --- | --- |
+| `document_denoising.ipynb` | 실험 전체 과정 (모델 비교, 추가 실험, ECG 심화) |
+| `model.py` | 최종 모델 UNetAE와 공통 함수 |
+| `train.py` / `predict.py` | 학습 / 평가·복원·제출 파일 생성 |
+| `app.py` | Gradio 데모 |
+| `weights/unet_ae_final.pt` | 학습된 가중치 (3.9MB) |

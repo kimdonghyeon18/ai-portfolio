@@ -8,6 +8,10 @@
 | 도구 | Python, pandas, scikit-learn (Pipeline, ColumnTransformer, GridSearchCV) |
 | 노트북 | [`titanic_survival.ipynb`](./titanic_survival.ipynb) |
 
+![교차검증 점수와 리더보드 점수 비교](./images/cv_vs_leaderboard.png)
+
+*교차검증 1위였던 RF + 티켓 모델(빨강)은 리더보드에서 성별 규칙 기준선보다 낮았습니다. 같은 RF를 얕게 만든 모델(파랑)이 최종 1위가 되었습니다.*
+
 ---
 
 ## 1. 문제: 무엇을 왜 풀려고 했나
@@ -86,3 +90,12 @@
   - 처음부터 "성별 규칙과 다르게 예측한 승객"을 검증 단계의 진단 지표로 넣어, 제출 전에 과적합 집단을 확인하겠습니다.
   - 트리 복잡도(depth, leaf)를 반복 교차검증으로 고르고, 리더보드는 마지막 한 번만 확인하겠습니다.
 - **배운 점:** train 안의 평가만으로는 train과 test의 차이를 다 볼 수 없습니다. 점수 하나보다 **어떤 집단에서 예측이 바뀌었는지**를 보는 것이 원인을 찾는 데 더 쓸모 있었습니다.
+
+## 7. 직접 실행해 보기
+
+[Kaggle Titanic](https://www.kaggle.com/c/titanic/data)에서 `train.csv`, `test.csv`, `gender_submission.csv`를 받아 `data/` 폴더에 넣고 노트북을 위에서부터 실행합니다.
+
+```bash
+pip install -r requirements.txt
+jupyter notebook titanic_survival.ipynb
+```
