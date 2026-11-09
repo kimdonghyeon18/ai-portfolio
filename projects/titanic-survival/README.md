@@ -4,7 +4,6 @@
 
 | 항목 | 내용 |
 | --- | --- |
-| 과제 | 부트캠프 개인 과제 (Kaggle Titanic 대회) |
 | 데이터 | Kaggle Titanic: train 891명 / test 418명 |
 | 도구 | Python, pandas, scikit-learn (Pipeline, ColumnTransformer, GridSearchCV) |
 | 노트북 | [`titanic_survival.ipynb`](./titanic_survival.ipynb) |
