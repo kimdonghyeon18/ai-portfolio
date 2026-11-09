@@ -4,7 +4,6 @@
 
 | 항목 | 내용 |
 | --- | --- |
-| 과제 | 부트캠프 스프린트 미션 5 (Kaggle Denoising Dirty Documents) |
 | 데이터 | 손상 문서 train 144장(원본 짝 있음) / test 72장, 크기 420×540과 258×540 두 종류 |
 | 도구 | Python, PyTorch (Conv2d, ConvTranspose2d), NumPy, PIL |
 | 노트북 | [`document_denoising.ipynb`](./document_denoising.ipynb) |
