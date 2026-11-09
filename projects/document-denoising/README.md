@@ -7,7 +7,7 @@
 | 데이터 | 손상 문서 train 144장(원본 짝 있음) / test 72장, 크기 420×540과 258×540 두 종류 |
 | 도구 | Python, PyTorch (Conv2d, ConvTranspose2d), NumPy, PIL, ONNX Runtime Web, Gradio |
 | 노트북 | [`document_denoising.ipynb`](./document_denoising.ipynb) |
-| 데모 | [Hugging Face Space에서 바로 써 보기](https://huggingface.co/spaces/donyeon/document_denoising) (브라우저 안에서 추론, 설치 없음) |
+| 데모 | [Hugging Face Space에서 바로 써 보기](https://huggingface.co/spaces/donyeon/document_denoising) (브라우저 안에서 작동, 설치 없음) |
 
 ![손상본, 복원 결과, 원본 비교](./images/before_after.png)
 
