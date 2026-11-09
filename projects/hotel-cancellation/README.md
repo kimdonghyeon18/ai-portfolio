@@ -4,7 +4,6 @@
 
 | 항목 | 내용 |
 | --- | --- |
-| 과제 | 부트캠프 개인 과제 |
 | 데이터 | 포르투갈 City Hotel·Resort Hotel 예약 119,390건, 29개 열 |
 | 도구 | Python, pandas, matplotlib, seaborn |
 | 노트북 | [`hotel_cancellation.ipynb`](./hotel_cancellation.ipynb) |
