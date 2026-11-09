@@ -9,7 +9,7 @@
 | --- | --- | --- |
 | [호텔 예약 취소 분석](./projects/hotel-cancellation) | 취소율 37%는 어디서 나오고, 무엇부터 바꿔야 하나? | 다른 요인으로 나눠 봐도 유지되는 5개 요인으로 호텔별 대응 우선순위 제안 |
 | [타이타닉 생존자 예측](./projects/titanic-survival) | 교차검증 1위 모델은 왜 리더보드에서 기준선보다 낮았나? | 오답 집단을 분석해 과적합 원인을 찾고, 복잡도를 낮춰 0.761 → **0.787** |
-| [문서 이미지 노이즈 제거](./projects/document-denoising) | 층을 늘린 모델은 왜 "모두 흰색"에 갇혔나? | 스킵 커넥션·U-Net + 학습률 조정으로 RMSE 0.1551 → **0.0128** (Kaggle 0.01837) |
+| [문서 이미지 노이즈 제거](./projects/document-denoising) | 층을 늘린 모델은 왜 "모두 흰색"에 갇혔나? | 스킵 커넥션·U-Net + 학습률 조정으로 RMSE 0.1551 → **0.0128** (Kaggle 0.01837) · [데모](https://huggingface.co/spaces/donyeon/document_denoising) |
 
 
 ## 정리 원칙

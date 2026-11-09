@@ -7,6 +7,7 @@
 | 데이터 | 손상 문서 train 144장(원본 짝 있음) / test 72장, 크기 420×540과 258×540 두 종류 |
 | 도구 | Python, PyTorch (Conv2d, ConvTranspose2d), NumPy, PIL, ONNX Runtime Web, Gradio |
 | 노트북 | [`document_denoising.ipynb`](./document_denoising.ipynb) |
+| 데모 | [Hugging Face Space에서 바로 써 보기](https://huggingface.co/spaces/donyeon/document_denoising) (브라우저 안에서 추론, 설치 없음) |
 
 ![손상본, 복원 결과, 원본 비교](./images/before_after.png)
 
@@ -105,7 +106,7 @@
 
 ## 7. 직접 실행해 보기
 
-**웹 데모 (설치 없음):** `web/` 폴더는 모델을 ONNX로 바꿔 방문자의 브라우저에서 직접 돌리는 정적 페이지입니다. 서버가 필요 없어 Hugging Face Static Space나 GitHub Pages에 그대로 올릴 수 있고, 이미지는 어디에도 전송되지 않습니다. PyTorch와 출력이 같은지 확인했습니다(최대 차이 약 4e-7).
+**웹 데모 (설치 없음):** [https://huggingface.co/spaces/donyeon/document_denoising](https://huggingface.co/spaces/donyeon/document_denoising) · `web/` 폴더는 모델을 ONNX로 바꿔 방문자의 브라우저에서 직접 돌리는 정적 페이지입니다. 서버가 필요 없어 Hugging Face Static Space나 GitHub Pages에 그대로 올릴 수 있고, 이미지는 어디에도 전송되지 않습니다. PyTorch와 출력이 같은지 확인했습니다(최대 차이 약 4e-7).
 
 ```bash
 python export_onnx.py            # weights → web/model.onnx 변환 + PyTorch와 비교
