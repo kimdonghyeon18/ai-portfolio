@@ -5,7 +5,7 @@
 | 항목 | 내용 |
 | --- | --- |
 | 데이터 | 손상 문서 train 144장(원본 짝 있음) / test 72장, 크기 420×540과 258×540 두 종류 |
-| 도구 | Python, PyTorch (Conv2d, ConvTranspose2d), NumPy, PIL, Gradio |
+| 도구 | Python, PyTorch (Conv2d, ConvTranspose2d), NumPy, PIL, ONNX Runtime Web, Gradio |
 | 노트북 | [`document_denoising.ipynb`](./document_denoising.ipynb) |
 
 ![손상본, 복원 결과, 원본 비교](./images/before_after.png)
@@ -105,7 +105,14 @@
 
 ## 7. 직접 실행해 보기
 
-**데모:** 이미지를 올리면 복원 결과를 보여주는 Gradio 앱입니다.
+**웹 데모 (설치 없음):** `web/` 폴더는 모델을 ONNX로 바꿔 방문자의 브라우저에서 직접 돌리는 정적 페이지입니다. 서버가 필요 없어 Hugging Face Static Space나 GitHub Pages에 그대로 올릴 수 있고, 이미지는 어디에도 전송되지 않습니다. PyTorch와 출력이 같은지 확인했습니다(최대 차이 약 4e-7).
+
+```bash
+python export_onnx.py            # weights → web/model.onnx 변환 + PyTorch와 비교
+python -m http.server -d web     # http://localhost:8000 에서 확인
+```
+
+**로컬 Gradio 앱:**
 
 ```bash
 pip install -r requirements.txt
@@ -126,5 +133,7 @@ python train.py --data denoising --epochs 600                   # 처음부터 �
 | `document_denoising.ipynb` | 실험 전체 과정 (모델 비교, 추가 실험, ECG 심화) |
 | `model.py` | 최종 모델 UNetAE와 공통 함수 |
 | `train.py` / `predict.py` | 학습 / 평가·복원·제출 파일 생성 |
-| `app.py` | Gradio 데모 |
+| `web/` | 브라우저 데모 (`index.html`, `model.onnx`, `sample.png`) |
+| `export_onnx.py` | 가중치를 ONNX로 변환하고 결과 검증 |
+| `app.py` | Gradio 데모 (로컬 실행) |
 | `weights/unet_ae_final.pt` | 학습된 가중치 (3.9MB) |
